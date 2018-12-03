@@ -32,7 +32,7 @@ def input_loop() :
         print "[0] - Exit the program."
         print " "
 
-        user_input = input("Please select an option from above: ")
+        user_input = input("[*] - Please select an option from above: ")
 
         if user_input == 1 :
             main1()
