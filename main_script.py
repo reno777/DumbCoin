@@ -26,7 +26,7 @@ def input_loop() :
     while i != 0 :
         print "[1] - Generate your 3 money orders."
         print "[2] - Blind your money orders."
-        print "[3] - Bank unblinds a money order and signs the rest."
+        print "[3] - Bank unblinds a money orders and signs them."
         print "[4] - Give your signed money orders to a merchant."
         print "[5] - Merchant verifies and deposits your money order."
         print "[0] - Exit the program."
