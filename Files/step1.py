@@ -19,6 +19,7 @@ def generate() :
 
     k1 = random.randrange(1,1000)
     k2 = random.randrange(1,1000)
+    k3 = random.randrange(1,1000)
     num1_1 = random.randrange(1,1000)
     num1_2 = random.randrange(1,1000)
     num2_1 = random.randrange(1,1000)
@@ -97,7 +98,7 @@ def generate() :
     money_order1 += i1_1
     money_order1 += i1_2
     
-    with open('output/money_order1_output.txt', 'wb') as f :
+    with open('/home/reno/git/DumbCoin/Files/output/money_order1_output.txt','wb') as f :
         pickle.dump(money_order1, f)
 
     #second money order
@@ -109,7 +110,7 @@ def generate() :
     money_order2 += i2_1
     money_order2 += i2_2
 
-    with open('output/money_order2_output.txt', 'wb') as f :
+    with open('/home/reno/git/DumbCoin/Files/output/money_order2_output.txt','wb') as f :
         pickle.dump(money_order2, f)
 
     #third money order
@@ -121,15 +122,16 @@ def generate() :
     money_order3 += i3_1
     money_order3 += i3_2
 
-    with open('output/money_order3_output.txt', 'wb') as f :
+    with open('/home/reno/git/DumbCoin/Files/output/money_order3_output.txt','wb') as f :
         pickle.dump(money_order3, f)
 
-    with open('output/k_variables.txt', 'wb') as f:
+    with open('/home/reno/git/DumbCoin/Files/output/k_variables.txt','wb') as f:
         print >> f, k1
         print >> f, k2
+        print >> f, k3
 
     print " "
-    print "[*] - Your money order has been generated!"
+    print "[!!] - Your money order has been generated!"
     print " "
 
 def main1() :
@@ -137,5 +139,3 @@ def main1() :
 
 if __name__ == "__main__" :
     main1()
-
-
