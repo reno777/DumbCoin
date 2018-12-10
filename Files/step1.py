@@ -7,7 +7,9 @@
 ### LICENSE: GNU-GPL v3.0
 ### DESCRIPTION: This program was made for COSC 274: Intro to Applied Cryptography, project 3.
 ### This program is used to demonstrate the use of protocol number 4, described in
-### [SCHN96], p.142 to implement an electronic cash system.
+### [SCHN96], p.142 to implement an electronic cash system
+### CREDIT: The perl script used in this program was found on github and can be
+### found at https://github.com/bsquille/Digital_Cash/blob/master/Files/LargeNumberCalc.pl.
 """
 
 import random
