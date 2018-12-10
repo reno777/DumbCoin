@@ -21,8 +21,21 @@ def unblind() :
 
     with open('Files/output/k_variables.txt','rb') as f :
         k_values = pickle.load(f)
+    rand = random.randrange(1,3)
+    
+    if rand == 1 :
+        blindmo2(e, n, k_values[1])
+        blindmo3(e, n, k_values[2])
+    elif rand == 2 :
+        blindmo1(e, n, k_values[0])
+        blindmo3(e, n, k_values[2])
+    elif rand == 3 :
+        blindmo1(e, n, k_values[0])
+        blindmo2(e, n, k_values[1])
+    else :
+        print "[!!!] - ERROR!"
 
-    blindmo1(e, n, k_values[0])
+    print "[!!]Two of three money orders have been unblinded."
 
 def large_num(e, n, k_value) :
     with open('Files/perl_input.txt','w') as f :
@@ -98,7 +111,7 @@ def blindmo2(e, n, k2) :
 
     unblinding_factor = large_num(e, n, k2)
 
-    unblind_money_order1 = []
+    unblind_money_order2 = []
     i = 0
     while i < len(blind_money_order2) :
         unblind_money_order2.append((blind_money_order2[i] * int(unblinding_factor)) % n)
@@ -115,7 +128,7 @@ def blindmo2(e, n, k2) :
     with open('Files/output/unblind_money_order2.txt','wb') as f :
         pickle.dump(unblind_money_order2, f)
         
-def blindmo1(e, n, k3) :
+def blindmo3(e, n, k3) :
     #testing unblind for moneyorder1
     with open('Files/output/blind_money_order3.txt','rb') as f :
         blind_money_order3 = pickle.load(f)

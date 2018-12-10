@@ -103,7 +103,7 @@ def generate() :
 
     #second money order
     #generates a large number for uniqe identifier
-    unique = [random.randrange(10000,1000000)]
+    unique = [random.randrange(1,1000)]
 
     money_order2 = [amount]
     money_order2 += unique
@@ -115,7 +115,7 @@ def generate() :
 
     #third money order
     #generates a large number for uniqe identifier
-    unique = [random.randrange(10000,1000000)]
+    unique = [random.randrange(1,1000)]
 
     money_order3 = [amount]
     money_order3 += unique
