@@ -196,6 +196,70 @@ def signmo1(d, n) :
     print "[*] - Signature:",''.join(map(str,signed_money_order1[10:]))
     print " "
 
+def signmo2(d, n) :
+    with open('Files/output/blind_money_order2.txt','rb') as f :
+        blind_money_order2 = pickle.load(f)
+
+    temp = []
+    i = 0
+    while i < len(blind_money_order2) :
+        with open('Files/perl_input.txt','w') as f :
+            print >> f, blind_money_order2[i]
+            print >> f, d
+            print >> f, n
+            f.close()
+        call(["perl","Files/LargeNumberCalc.pl"])
+        with open('Files/perl_output.txt','rb') as f :
+            temp1 = (f.readline())
+            f.close()
+        temp.append(temp1)
+        i += 1
+
+    signed_money_order2 = []
+    signed_money_order2 +=  blind_money_order2
+    signed_money_order2 += temp
+
+    print " "
+    print "[!] - Signed Money Order 2"
+    print "[*] - Amount:",signed_money_order2[0]
+    print "[*] - Uniqueness Number:",signed_money_order2[1]
+    print "[*] - I21:",signed_money_order2[2],signed_money_order2[3],signed_money_order2[4],signed_money_order2[5]
+    print "[*] - I22:",signed_money_order2[6],signed_money_order2[7],signed_money_order2[8],signed_money_order2[9]
+    print "[*] - Signature:",''.join(map(str,signed_money_order2[10:]))
+    print " "
+    
+def signmo3(d, n) :
+    with open('Files/output/blind_money_order3.txt','rb') as f :
+        blind_money_order3 = pickle.load(f)
+
+    temp = []
+    i = 0
+    while i < len(blind_money_order3) :
+        with open('Files/perl_input.txt','w') as f :
+            print >> f, blind_money_order3[i]
+            print >> f, d
+            print >> f, n
+            f.close()
+        call(["perl","Files/LargeNumberCalc.pl"])
+        with open('Files/perl_output.txt','rb') as f :
+            temp1 = (f.readline())
+            f.close()
+        temp.append(temp1)
+        i += 1
+
+    signed_money_order3 = []
+    signed_money_order3 +=  blind_money_order3
+    signed_money_order3 += temp
+
+    print " "
+    print "[!] - Signed Money Order 3"
+    print "[*] - Amount:",signed_money_order3[0]
+    print "[*] - Uniqueness Number:",signed_money_order3[1]
+    print "[*] - I11:",signed_money_order3[2],signed_money_order3[3],signed_money_order3[4],signed_money_order3[5]
+    print "[*] - I12:",signed_money_order3[6],signed_money_order3[7],signed_money_order3[8],signed_money_order3[9]
+    print "[*] - Signature:",''.join(map(str,signed_money_order3[10:]))
+    print " "
+    
 def main3() :
     unblind()
 
