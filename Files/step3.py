@@ -76,7 +76,12 @@ def blindmo1(e, n, k1) :
     print "[!] - Unblinded Money Order 1"
     print "[*] - Amount:",unblind_money_order1[0]
     print "[*] - Uniqueness Number:",unblind_money_order1[1]
+    print "[*} - I11:",unblind_money_order1[2],unblind_money_order1[3],unblind_money_order1[4],unblind_money_order1[5]
+    print "[*} - I12:",unblind_money_order1[6],unblind_money_order1[7],unblind_money_order1[8],unblind_money_order1[9]
     print " "
+
+    with open('Files/output/unblind_money_order2.txt','wb') as f :
+        pickle.dump(unblind_money_order1, f)
 
 def main3() :
     unblind()

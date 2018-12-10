@@ -17,9 +17,9 @@ def generate() :
     amount = input("[*] - Please enter the amount of money for the money order: ")
     identity = input("[*] - Please enter your ID: ")
 
-    k1 = random.randrange(1,1000)
-    k2 = random.randrange(1,1000)
-    k3 = random.randrange(1,1000)
+    k1 = random.randrange(1,100)
+    k2 = random.randrange(1,100)
+    k3 = random.randrange(1,100)
     num1_1 = random.randrange(1,1000)
     num1_2 = random.randrange(1,1000)
     num2_1 = random.randrange(1,1000)
@@ -91,14 +91,14 @@ def generate() :
 
     #first money order
     #generates a large number for uniqe identifier
-    unique = [random.randrange(10000,1000000)]
+    unique = [random.randrange(1,1000)]
 
     money_order1 = [amount]
     money_order1 += unique
     money_order1 += i1_1
     money_order1 += i1_2
     
-    with open('/home/reno/git/DumbCoin/Files/output/money_order1_output.txt','wb') as f :
+    with open('Files/output/money_order1_output.txt','wb') as f :
         pickle.dump(money_order1, f)
 
     #second money order
@@ -110,7 +110,7 @@ def generate() :
     money_order2 += i2_1
     money_order2 += i2_2
 
-    with open('/home/reno/git/DumbCoin/Files/output/money_order2_output.txt','wb') as f :
+    with open('Files/output/money_order2_output.txt','wb') as f :
         pickle.dump(money_order2, f)
 
     #third money order
@@ -122,10 +122,10 @@ def generate() :
     money_order3 += i3_1
     money_order3 += i3_2
 
-    with open('/home/reno/git/DumbCoin/Files/output/money_order3_output.txt','wb') as f :
+    with open('Files/output/money_order3_output.txt','wb') as f :
         pickle.dump(money_order3, f)
 
-    with open('/home/reno/git/DumbCoin/Files/output/k_variables.txt','wb') as f:
+    with open('Files/output/k_variables.txt','wb') as f:
         print >> f, k1
         print >> f, k2
         print >> f, k3
@@ -133,6 +133,11 @@ def generate() :
     print " "
     print "[!!] - Your money order has been generated!"
     print " "
+
+    k_values = [k1,k2,k3]
+
+    with open('Files/output/k_variables.txt','wb') as f :
+        pickle.dump(k_values, f)
 
 def main1() :
     generate()
