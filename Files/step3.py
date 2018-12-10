@@ -27,22 +27,37 @@ def unblind() :
     if rand == 1 :
         blindmo2(e, n, k_values[1])
         blindmo3(e, n, k_values[2])
+        print " "
+        print "[!!] - Money orders 2 and 3 have been unblinded!"
+        print " "
+        signmo1(d, n)
+        print " "
+        print "[!!] - Money order 1 has been signed!"
+        print " "
     elif rand == 2 :
         blindmo1(e, n, k_values[0])
         blindmo3(e, n, k_values[2])
+        print " "
+        print "[!!] - Money orders 1 and 3 have been unblinded!"
+        print " "
+        signmo2(d, n)
+        print " "
+        print "[!!] - Money order 2 has been signed!"
+        print " "
     elif rand == 3 :
         blindmo1(e, n, k_values[0])
         blindmo2(e, n, k_values[1])
+        print " "
+        print "[!!] - Money orders 1 and 2 have been unblinded!"
+        print " "
+        signmo3(d, n)
+        print " "
+        print "[!!] - Money order 3 has been signed!"
+        print " "
     else :
         print " "
         print "[!!!] - ERROR!"
         print " "
-
-    print " "
-    print "[!!] - Two of three money orders have been unblinded."
-    print " "
-
-    signmo1(d, n)
 
 def large_num(e, n, k_value) :
     with open('Files/perl_input.txt','w') as f :
