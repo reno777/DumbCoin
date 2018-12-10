@@ -211,6 +211,9 @@ def signmo1(d, n) :
     print "[*] - Signature:",''.join(map(str,signed_money_order1[10:]))
     print " "
 
+    with open('Files/output/signed_money_order.txt','wb') as f :
+        pickle.dump(signed_money_order1, f)
+
 def signmo2(d, n) :
     with open('Files/output/blind_money_order2.txt','rb') as f :
         blind_money_order2 = pickle.load(f)
@@ -242,6 +245,9 @@ def signmo2(d, n) :
     print "[*] - I22:",signed_money_order2[6],signed_money_order2[7],signed_money_order2[8],signed_money_order2[9]
     print "[*] - Signature:",''.join(map(str,signed_money_order2[10:]))
     print " "
+
+    with open('Files/output/signed_money_order.txt','wb') as f :
+        pickle.dump(signed_money_order1, f)
     
 def signmo3(d, n) :
     with open('Files/output/blind_money_order3.txt','rb') as f :
@@ -274,6 +280,9 @@ def signmo3(d, n) :
     print "[*] - I12:",signed_money_order3[6],signed_money_order3[7],signed_money_order3[8],signed_money_order3[9]
     print "[*] - Signature:",''.join(map(str,signed_money_order3[10:]))
     print " "
+
+    with open('Files/output/signed_money_order.txt','wb') as f :
+        pickle.dump(signed_money_order1, f)
     
 def main3() :
     unblind()
