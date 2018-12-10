@@ -30,7 +30,7 @@ def unblind() :
         print " "
         print "[!!] - Money orders 2 and 3 have been unblinded!"
         print " "
-        signmo1(d, n)
+        signmo1(d, n, k_values[0])
         print " "
         print "[!!] - Money order 1 has been signed!"
         print " "
@@ -40,7 +40,7 @@ def unblind() :
         print " "
         print "[!!] - Money orders 1 and 3 have been unblinded!"
         print " "
-        signmo2(d, n)
+        signmo2(d, n, k_values[1])
         print " "
         print "[!!] - Money order 2 has been signed!"
         print " "
@@ -50,7 +50,7 @@ def unblind() :
         print " "
         print "[!!] - Money orders 1 and 2 have been unblinded!"
         print " "
-        signmo3(d, n)
+        signmo3(d, n, k_values[2])
         print " "
         print "[!!] - Money order 3 has been signed!"
         print " "
@@ -179,7 +179,7 @@ def blindmo3(e, n, k3) :
     with open('Files/output/unblind_money_order3.txt','wb') as f :
         pickle.dump(unblind_money_order3, f)
 
-def signmo1(d, n) :
+def signmo1(d, n, k1) :
     with open('Files/output/blind_money_order1.txt','rb') as f :
         blind_money_order1 = pickle.load(f)
 
@@ -198,23 +198,23 @@ def signmo1(d, n) :
         temp.append(temp1)
         i += 1
 
-    signed_money_order1 = []
+    signed_money_order1 = [k1]
     signed_money_order1 +=  blind_money_order1
     signed_money_order1 += temp
 
     print " "
     print "[!] - Signed Money Order 1"
-    print "[*] - Amount:",signed_money_order1[0]
-    print "[*] - Uniqueness Number:",signed_money_order1[1]
-    print "[*] - I11:",signed_money_order1[2],signed_money_order1[3],signed_money_order1[4],signed_money_order1[5]
-    print "[*] - I12:",signed_money_order1[6],signed_money_order1[7],signed_money_order1[8],signed_money_order1[9]
+    print "[*] - Amount:",signed_money_order1[1]
+    print "[*] - Uniqueness Number:",signed_money_order1[2]
+    print "[*] - I11:",signed_money_order1[3],signed_money_order1[4],signed_money_order1[5],signed_money_order1[6]
+    print "[*] - I12:",signed_money_order1[7],signed_money_order1[8],signed_money_order1[9],signed_money_order1[10]
     print "[*] - Signature:",''.join(map(str,signed_money_order1[10:]))
     print " "
 
     with open('Files/output/signed_money_order.txt','wb') as f :
         pickle.dump(signed_money_order1, f)
 
-def signmo2(d, n) :
+def signmo2(d, n, k2) :
     with open('Files/output/blind_money_order2.txt','rb') as f :
         blind_money_order2 = pickle.load(f)
 
@@ -233,23 +233,23 @@ def signmo2(d, n) :
         temp.append(temp1)
         i += 1
 
-    signed_money_order2 = []
+    signed_money_order2 = [k2]
     signed_money_order2 +=  blind_money_order2
     signed_money_order2 += temp
 
     print " "
     print "[!] - Signed Money Order 2"
-    print "[*] - Amount:",signed_money_order2[0]
-    print "[*] - Uniqueness Number:",signed_money_order2[1]
-    print "[*] - I21:",signed_money_order2[2],signed_money_order2[3],signed_money_order2[4],signed_money_order2[5]
-    print "[*] - I22:",signed_money_order2[6],signed_money_order2[7],signed_money_order2[8],signed_money_order2[9]
-    print "[*] - Signature:",''.join(map(str,signed_money_order2[10:]))
+    print "[*] - Amount:",signed_money_order2[1]
+    print "[*] - Uniqueness Number:",signed_money_order2[2]
+    print "[*] - I21:",signed_money_order2[3],signed_money_order2[4],signed_money_order2[5],signed_money_order2[6]
+    print "[*] - I22:",signed_money_order2[7],signed_money_order2[8],signed_money_order2[9],signed_money_order2[10]
+    print "[*] - Signature:",''.join(map(str,signed_money_order2[11:]))
     print " "
 
     with open('Files/output/signed_money_order.txt','wb') as f :
-        pickle.dump(signed_money_order1, f)
+        pickle.dump(signed_money_order2, f)
     
-def signmo3(d, n) :
+def signmo3(d, n, k3) :
     with open('Files/output/blind_money_order3.txt','rb') as f :
         blind_money_order3 = pickle.load(f)
 
@@ -268,21 +268,21 @@ def signmo3(d, n) :
         temp.append(temp1)
         i += 1
 
-    signed_money_order3 = []
+    signed_money_order3 = [k3]
     signed_money_order3 +=  blind_money_order3
     signed_money_order3 += temp
 
     print " "
     print "[!] - Signed Money Order 3"
-    print "[*] - Amount:",signed_money_order3[0]
-    print "[*] - Uniqueness Number:",signed_money_order3[1]
-    print "[*] - I11:",signed_money_order3[2],signed_money_order3[3],signed_money_order3[4],signed_money_order3[5]
-    print "[*] - I12:",signed_money_order3[6],signed_money_order3[7],signed_money_order3[8],signed_money_order3[9]
-    print "[*] - Signature:",''.join(map(str,signed_money_order3[10:]))
+    print "[*] - Amount:",signed_money_order3[1]
+    print "[*] - Uniqueness Number:",signed_money_order3[2]
+    print "[*] - I11:",signed_money_order3[3],signed_money_order3[4],signed_money_order3[5],signed_money_order3[6]
+    print "[*] - I12:",signed_money_order3[7],signed_money_order3[8],signed_money_order3[9],signed_money_order3[10]
+    print "[*] - Signature:",''.join(map(str,signed_money_order3[11:]))
     print " "
 
     with open('Files/output/signed_money_order.txt','wb') as f :
-        pickle.dump(signed_money_order1, f)
+        pickle.dump(signed_money_order3, f)
     
 def main3() :
     unblind()
