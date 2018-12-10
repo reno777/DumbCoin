@@ -11,6 +11,7 @@
 """
 
 import pickle
+import random
 from subprocess import call
 
 def unblind() :
@@ -21,7 +22,7 @@ def unblind() :
 
     with open('Files/output/k_variables.txt','rb') as f :
         k_values = pickle.load(f)
-    rand = random.randrange(1,3)
+    rand = random.randrange(1,4)
     
     if rand == 1 :
         blindmo2(e, n, k_values[1])
@@ -33,9 +34,15 @@ def unblind() :
         blindmo1(e, n, k_values[0])
         blindmo2(e, n, k_values[1])
     else :
+        print " "
         print "[!!!] - ERROR!"
+        print " "
 
-    print "[!!]Two of three money orders have been unblinded."
+    print " "
+    print "[!!] - Two of three money orders have been unblinded."
+    print " "
+
+    signmo1(d, n)
 
 def large_num(e, n, k_value) :
     with open('Files/perl_input.txt','w') as f :
@@ -65,7 +72,6 @@ def large_num(e, n, k_value) :
     return unblinding_factor
 
 def blindmo1(e, n, k1) :
-    #testing unblind for moneyorder1
     with open('Files/output/blind_money_order1.txt','rb') as f :
         blind_money_order1 = pickle.load(f)
 
@@ -89,15 +95,14 @@ def blindmo1(e, n, k1) :
     print "[!] - Unblinded Money Order 1"
     print "[*] - Amount:",unblind_money_order1[0]
     print "[*] - Uniqueness Number:",unblind_money_order1[1]
-    print "[*} - I11:",unblind_money_order1[2],unblind_money_order1[3],unblind_money_order1[4],unblind_money_order1[5]
-    print "[*} - I12:",unblind_money_order1[6],unblind_money_order1[7],unblind_money_order1[8],unblind_money_order1[9]
+    print "[*] - I11:",unblind_money_order1[2],unblind_money_order1[3],unblind_money_order1[4],unblind_money_order1[5]
+    print "[*] - I12:",unblind_money_order1[6],unblind_money_order1[7],unblind_money_order1[8],unblind_money_order1[9]
     print " "
 
     with open('Files/output/unblind_money_order2.txt','wb') as f :
         pickle.dump(unblind_money_order1, f)
         
 def blindmo2(e, n, k2) :
-    #testing unblind for moneyorder1
     with open('Files/output/blind_money_order2.txt','rb') as f :
         blind_money_order2 = pickle.load(f)
 
@@ -121,15 +126,14 @@ def blindmo2(e, n, k2) :
     print "[!] - Unblinded Money Order 2"
     print "[*] - Amount:",unblind_money_order2[0]
     print "[*] - Uniqueness Number:",unblind_money_order2[1]
-    print "[*} - I21:",unblind_money_order2[2],unblind_money_order2[3],unblind_money_order2[4],unblind_money_order2[5]
-    print "[*} - I22:",unblind_money_order2[6],unblind_money_order2[7],unblind_money_order2[8],unblind_money_order2[9]
+    print "[*] - I21:",unblind_money_order2[2],unblind_money_order2[3],unblind_money_order2[4],unblind_money_order2[5]
+    print "[*] - I22:",unblind_money_order2[6],unblind_money_order2[7],unblind_money_order2[8],unblind_money_order2[9]
     print " "
 
     with open('Files/output/unblind_money_order2.txt','wb') as f :
         pickle.dump(unblind_money_order2, f)
         
 def blindmo3(e, n, k3) :
-    #testing unblind for moneyorder1
     with open('Files/output/blind_money_order3.txt','rb') as f :
         blind_money_order3 = pickle.load(f)
 
@@ -153,12 +157,44 @@ def blindmo3(e, n, k3) :
     print "[!] - Unblinded Money Order 3"
     print "[*] - Amount:",unblind_money_order3[0]
     print "[*] - Uniqueness Number:",unblind_money_order3[1]
-    print "[*} - I31:",unblind_money_order3[2],unblind_money_order3[3],unblind_money_order3[4],unblind_money_order3[5]
-    print "[*} - I32:",unblind_money_order3[6],unblind_money_order3[7],unblind_money_order3[8],unblind_money_order3[9]
+    print "[*] - I31:",unblind_money_order3[2],unblind_money_order3[3],unblind_money_order3[4],unblind_money_order3[5]
+    print "[*] - I32:",unblind_money_order3[6],unblind_money_order3[7],unblind_money_order3[8],unblind_money_order3[9]
     print " "
 
     with open('Files/output/unblind_money_order3.txt','wb') as f :
         pickle.dump(unblind_money_order3, f)
+
+def signmo1(d, n) :
+    with open('Files/output/blind_money_order1.txt','rb') as f :
+        blind_money_order1 = pickle.load(f)
+
+    temp = []
+    i = 0
+    while i < len(blind_money_order1) :
+        with open('Files/perl_input.txt','w') as f :
+            print >> f, blind_money_order1[i]
+            print >> f, d
+            print >> f, n
+            f.close()
+        call(["perl","Files/LargeNumberCalc.pl"])
+        with open('Files/perl_output.txt','rb') as f :
+            temp1 = (f.readline())
+            f.close()
+        temp.append(temp1)
+        i += 1
+
+    signed_money_order1 = []
+    signed_money_order1 +=  blind_money_order1
+    signed_money_order1 += temp
+
+    print " "
+    print "[!] - Signed Money Order 1"
+    print "[*] - Amount:",signed_money_order1[0]
+    print "[*] - Uniqueness Number:",signed_money_order1[1]
+    print "[*] - I11:",signed_money_order1[2],signed_money_order1[3],signed_money_order1[4],signed_money_order1[5]
+    print "[*] - I12:",signed_money_order1[6],signed_money_order1[7],signed_money_order1[8],signed_money_order1[9]
+    print "[*] - Signature:",''.join(map(str,signed_money_order1[10:]))
+    print " "
 
 def main3() :
     unblind()
